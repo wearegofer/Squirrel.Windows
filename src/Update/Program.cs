@@ -430,6 +430,9 @@ namespace Squirrel.Update
 
         private void ReleasifyElectron(string package, string targetDir = null, string baseUrl = null)
         {
+            // check that package is valid
+            new ZipPackage(package).GetType();
+
             if (baseUrl != null) {
                 if (!Utility.IsHttpUrl(baseUrl)) {
                     throw new Exception(string.Format("Invalid --baseUrl '{0}'. A base URL must start with http or https and be a valid URI.", baseUrl));
